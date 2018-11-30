@@ -1,12 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="0dp"
         android:text="Create a Meeting"
         android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/MeetingTitle"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Meeting Title" />
+
+    <EditText
+        android:id="@+id/MeetingNotes"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MeetingTitle"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Notes" />
+
+    <EditText
+        android:id="@+id/MeetingDate"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MeetingNotes"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="-93dp"
+        android:ems="10"
+        android:inputType="date"
+        tools:text="@tools:sample/date/ddmmyy" />
+
+    <EditText
+        android:id="@+id/MeetingTime"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="226dp"
+        android:layout_marginTop="104dp"
+        android:ems="10"
+        android:inputType="time"
+        tools:text="@tools:sample/date/hhmm" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="170dp"
+        android:layout_height="41dp"
+        android:layout_alignBottom="@+id/MeetingDate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="214dp"
+        android:layout_marginBottom="-100dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginBottom="47dp"
+        android:text="Create Meeting" />
 
 </RelativeLayout>
