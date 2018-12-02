@@ -30,7 +30,7 @@ public class CreateFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 addMeeting(view);
-                System.out.println("Click");
+                //System.out.println("Click");
             }
         });
 
@@ -42,7 +42,7 @@ public class CreateFragment extends Fragment {
         String notes = this.notesEdit.getText().toString();
         String date = this.dateEdit.getText().toString();
         String time = this.timeEdit.getText().toString();
-        System.out.println(title);
+        //System.out.println(title);
         FileHandler fh = new FileHandler(getContext());
         fh.createMeeting(title, notes, date, time);
 
