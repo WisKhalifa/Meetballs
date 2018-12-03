@@ -50,7 +50,6 @@ public class FileHandler {
 
     public static List<Meeting> displayMeeting(Context c) {
         List<Meeting> meeting = new ArrayList<>();
-        String appendText = "";
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(c.openFileInput("meetings.txt"));
             BufferedReader r = new BufferedReader(inputStreamReader);
@@ -60,6 +59,8 @@ public class FileHandler {
             //Location l = new Location(ms[3]);
             m = new Meeting(ms[0], ms[2]);
             m.setNotes(ms[1]);
+
+            meeting.add(m);
 
             System.out.println(Arrays.toString(meeting.toArray()));
             r.close();

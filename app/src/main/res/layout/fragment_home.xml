@@ -27,14 +27,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/ShowMeetingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginBottom="33dp"
-        android:text="Show Meetings" />
-
 </RelativeLayout>
