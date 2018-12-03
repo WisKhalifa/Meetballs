@@ -17,7 +17,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    public List<String> mDs = new ArrayList<>();
+    public List<Meeting> mDs = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
@@ -35,6 +35,8 @@ public class HomeFragment extends Fragment {
 
         Button mButton;
         mButton = view.findViewById(R.id.ShowMeetingsButton);
+
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,9 +52,11 @@ public class HomeFragment extends Fragment {
     public void showMeetings(View view) {
 
 
+        ArrayList<Meeting> m = new ArrayList<>();
+        m.add(new Meeting("testtitle", "12/04/18"));
         FileHandler fh = new FileHandler(getContext());
-        mDs = fh.displayMeeting();
-        mAdapter = new RecyclerAdapter(mDs);
+        //mDs = fh.displayMeeting(getActivity().getApplicationContext());
+        mAdapter = new RecyclerAdapter(getContext(), m);
 
         mRecyclerView.setAdapter(mAdapter);
 

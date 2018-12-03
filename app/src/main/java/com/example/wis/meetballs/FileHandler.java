@@ -48,16 +48,19 @@ public class FileHandler {
 
     }
 
-    public List<String> displayMeeting() {
-        List<String> meeting = new ArrayList<>();
+    public static List<Meeting> displayMeeting(Context c) {
+        List<Meeting> meeting = new ArrayList<>();
+        String appendText = "";
         try {
-            InputStreamReader inputStreamReader = new InputStreamReader(context.openFileInput("meetings.txt"));
+            InputStreamReader inputStreamReader = new InputStreamReader(c.openFileInput("meetings.txt"));
             BufferedReader r = new BufferedReader(inputStreamReader);
-            StringBuilder total = new StringBuilder();
-            for (String line; (line = r.readLine()) != null; ) {
-                total.append(line).append('\n');
-                meeting.add(line);
-            }
+
+            Meeting m;
+            String[] ms = r.readLine().split(",");
+            //Location l = new Location(ms[3]);
+            m = new Meeting(ms[0], ms[2]);
+            m.setNotes(ms[1]);
+
             System.out.println(Arrays.toString(meeting.toArray()));
             r.close();
 
