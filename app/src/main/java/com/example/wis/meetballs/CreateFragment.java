@@ -104,7 +104,26 @@ public class CreateFragment extends Fragment implements OnMapReadyCallback {
         String date = this.dateEdit.getText().toString();
         String time = this.timeEdit.getText().toString();
         FileHandler fh = new FileHandler(getContext());
-        fh.createMeeting(title, notes, date, time);
+
+        boolean valid = true;
+
+        if (title.equals("")) {
+            valid = false;
+        }
+        if (date.equals("")) {
+            valid = false;
+        }
+        if (notes.equals("")) {
+            valid = false;
+        }
+
+        if (valid) {
+            fh.createMeeting(title, notes, date, time);
+        } else {
+            Toast.makeText(this.getContext(), "Enter data", Toast.LENGTH_SHORT).show();
+        }
+
+        valid = false;
 
     }
 

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FileHandler {
@@ -21,6 +20,37 @@ public class FileHandler {
         this.context = context;
     }
 
+
+    public static List<Meeting> displayMeeting(Context c) {
+        List<Meeting> meeting = new ArrayList<>();
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(c.openFileInput("meetings.txt"));
+            BufferedReader r = new BufferedReader(inputStreamReader);
+
+
+            Meeting m = null;
+            String appendText = "";
+            while ((appendText = r.readLine()) != null) {
+
+                String[] ms = appendText.split(",");
+                if (ms.length > 3) {
+                    //Location l = new Location(ms[3]);
+                    m = new Meeting(ms[0], ms[2]);
+                    m.setNotes(ms[1]);
+                    meeting.add(m);
+                }
+
+
+            }
+            //System.out.println(Arrays.toString(meeting.toArray()));
+            r.close();
+
+        } catch (IOException e) {
+
+        }
+
+        return meeting;
+    }
 
     public void createMeeting(String title, String notes, String date, String time) {
 
@@ -43,33 +73,9 @@ public class FileHandler {
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
-        System.out.println("YEET");
+        //System.out.println("YEET");
 
 
-    }
-
-    public static List<Meeting> displayMeeting(Context c) {
-        List<Meeting> meeting = new ArrayList<>();
-        try {
-            InputStreamReader inputStreamReader = new InputStreamReader(c.openFileInput("meetings.txt"));
-            BufferedReader r = new BufferedReader(inputStreamReader);
-
-            Meeting m;
-            String[] ms = r.readLine().split(",");
-            //Location l = new Location(ms[3]);
-            m = new Meeting(ms[0], ms[2]);
-            m.setNotes(ms[1]);
-
-            meeting.add(m);
-
-            System.out.println(Arrays.toString(meeting.toArray()));
-            r.close();
-
-        } catch (IOException e) {
-
-        }
-
-        return meeting;
     }
 
 

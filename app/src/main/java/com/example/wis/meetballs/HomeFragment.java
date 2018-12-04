@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,9 +31,12 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(c);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        List<Meeting> m;
+        List<Meeting> m = new ArrayList<>();
         FileHandler fh = new FileHandler(getContext());
-        m = fh.displayMeeting(getContext());
+        m.addAll(fh.displayMeeting(getContext()));
+        //m.add(new Meeting("Meet", "12/04/10"));
+        //m.add(new Meeting("blaze", "20/04/20"));
+        //m.add(new Meeting("blaze", "20/05/20"));
         mAdapter = new RecyclerAdapter(getContext(), m);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

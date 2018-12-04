@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linrlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_cell_background"
     android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/meetName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="#c7b8a0" />
 
     <TextView
         android:id="@+id/meetDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="#ADD8E6" />
 
 </LinearLayout>
