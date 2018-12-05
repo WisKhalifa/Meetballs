@@ -21,7 +21,7 @@ public class CreateFragment extends Fragment {
 
     protected EditText titleEdit, notesEdit, dateEdit, timeEdit;
     static LatLng coord;
-    double lat, longi;
+
     GoogleMap mMap;
     MapView mMapView;
 
@@ -29,6 +29,8 @@ public class CreateFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create, container, false);
+
+        final Intent i = new Intent(getContext(), MapsActivity.class);
 
         titleEdit = view.findViewById(R.id.MeetingTitle);
         notesEdit = view.findViewById(R.id.MeetingNotes);
@@ -49,15 +51,17 @@ public class CreateFragment extends Fragment {
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), MapsActivity.class);
-                i.putExtra("LATITUDE", lat);
-                i.putExtra("LONGITUDE", longi);
+
 
                 startActivity(i);
 
+                i.getDoubleExtra("LATIUDE", MapsActivity.lat);
+                i.getDoubleExtra("LONGITUDE", MapsActivity.longi);
+                System.out.println("lat" + MapsActivity.lat);
+                System.out.println("long" + MapsActivity.longi);
+
             }
         });
-
 
 
         return view;
@@ -71,6 +75,8 @@ public class CreateFragment extends Fragment {
         String notes = this.notesEdit.getText().toString();
         String date = this.dateEdit.getText().toString();
         String time = this.timeEdit.getText().toString();
+        Double lat = MapsActivity.lat;
+        Double longi = MapsActivity.longi;
         FileHandler fh = new FileHandler(getContext());
 
         boolean valid = true;
@@ -86,7 +92,7 @@ public class CreateFragment extends Fragment {
         }
 
         if (valid) {
-            fh.createMeeting(title, notes, date, time);
+            fh.createMeeting(title, notes, date, time, lat, longi);
         } else {
             Toast.makeText(this.getContext(), "Enter data", Toast.LENGTH_SHORT).show();
         }

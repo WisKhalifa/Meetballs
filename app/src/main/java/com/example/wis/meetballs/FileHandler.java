@@ -34,16 +34,18 @@ public class FileHandler {
 
                 String[] ms = appendText.split(",");
                 if (ms.length > 3) {
-                    //Location l = new Location(ms[3]);
+
                     m = new Meeting(ms[0], ms[2]);
                     m.setNotes(ms[1]);
+                    m.setTime(ms[3]);
+                    m.setLat(Double.parseDouble(ms[4]));
+                    m.setLongi(Double.parseDouble(ms[5]));
 
                     meeting.add(m);
                 }
 
 
             }
-            //System.out.println(Arrays.toString(meeting.toArray()));
             r.close();
 
         } catch (IOException e) {
@@ -53,7 +55,7 @@ public class FileHandler {
         return meeting;
     }
 
-    public void createMeeting(String title, String notes, String date, String time) {
+    public void createMeeting(String title, String notes, String date, String time, double lat, double longi) {
 
 
         try {
@@ -67,6 +69,10 @@ public class FileHandler {
             outputStreamWriter.write(date);
             outputStreamWriter.write(",");
             outputStreamWriter.write(time);
+            outputStreamWriter.write(",");
+            outputStreamWriter.write(Double.toString(lat));
+            outputStreamWriter.write(",");
+            outputStreamWriter.write(Double.toString(longi));
             outputStreamWriter.write("\n");
             outputStreamWriter.close();
 

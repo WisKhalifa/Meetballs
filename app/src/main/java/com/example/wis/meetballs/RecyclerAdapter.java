@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -54,25 +53,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView1, mTextView2;
-        LinearLayout row_linearlayout;
-        RecyclerView rv2;
+
+
         private List<Meeting> currentMeeting;
 
         public MyViewHolder(final View v, List<Meeting> m) {
             super(v);
             mTextView1 = v.findViewById(R.id.meetName);
             mTextView2 = v.findViewById(R.id.meetDate);
-            //row_linearlayout = v.findViewById(R.id.linrlayout);
-            //rv2 = v.findViewById(R.id.MeetingList);
-
             currentMeeting = m;
-
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(v.getContext())
-                            .setTitle("test")
+                            .setTitle("Meeting Details")
+
                             .show();
                 }
             });

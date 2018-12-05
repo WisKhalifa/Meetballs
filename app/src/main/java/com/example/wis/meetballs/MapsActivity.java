@@ -17,7 +17,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     public Marker mMarker;
 
-    
+    public static double lat = 51.619543;
+    public static double longi = -3.878634;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng coFo = new LatLng(51.619543, -3.878634);
         mMap.addMarker(new MarkerOptions().position(coFo).title("Computational Foundry"));
-        //CreateFragment.coord = mMarker.getPosition();
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coFo));
+
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
@@ -62,6 +65,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .position(point)
                         .title("New Marker Point");
                 mMap.addMarker(marker);
+                lat = (point.latitude);
+                longi = (point.longitude);
                 Toast.makeText(MapsActivity.this, point.latitude + " " + point.longitude, Toast.LENGTH_LONG).show();
             }
 

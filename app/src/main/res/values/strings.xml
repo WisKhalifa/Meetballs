@@ -4,4 +4,11 @@
     <string name="title_create">Create a Meeting</string>
     <string name="title_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="meeting_title">Meeting Title</string>
+    <string name="notes">Meeting Notes</string>
+    <string name="date">Meeting Date</string>
+    <string name="time">Meeting Time</string>
+    <string name="attendees">Attendees</string>
+    <string name="create_meeting">Create Meeting</string>
+    <string name="set_location">Set Location</string>
 </resources>
