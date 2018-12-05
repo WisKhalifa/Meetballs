@@ -2,10 +2,12 @@ package com.example.wis.meetballs;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -48,9 +50,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    /*new AlertDialog.Builder(v.getContext())
-                            .setTitle("Meeting Details")
-                            .show();*/
                 AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
                 builder.setTitle("Meeting Details");
                 LayoutInflater lF = LayoutInflater.from(context);
@@ -74,6 +73,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
                 TextView mLongView = mFormView.findViewById(R.id.dialogMeetingLong);
                 mLongView.setText(Double.toString(meeting.getLongi()));
+
+                Button mLocView = mFormView.findViewById(R.id.meetingLocation);
+                mLocView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        MapsActivity.lat = meeting.getLat();
+                        MapsActivity.longi = meeting.getLongi();
+                        Intent inti = new Intent(view.getContext(), MapsActivity.class);
+                        context.startActivity(inti);
+                    }
+                });
 
 
                 builder.create();
