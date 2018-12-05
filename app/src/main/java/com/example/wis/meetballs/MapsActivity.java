@@ -9,11 +9,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    public Marker mMarker;
+
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng coFo = new LatLng(51.619543, -3.878634);
         mMap.addMarker(new MarkerOptions().position(coFo).title("Computational Foundry"));
+        //CreateFragment.coord = mMarker.getPosition();
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coFo));
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

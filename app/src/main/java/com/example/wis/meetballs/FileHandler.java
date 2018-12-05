@@ -37,6 +37,7 @@ public class FileHandler {
                     //Location l = new Location(ms[3]);
                     m = new Meeting(ms[0], ms[2]);
                     m.setNotes(ms[1]);
+
                     meeting.add(m);
                 }
 

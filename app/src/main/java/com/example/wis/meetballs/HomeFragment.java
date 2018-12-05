@@ -34,9 +34,6 @@ public class HomeFragment extends Fragment {
         List<Meeting> m = new ArrayList<>();
         FileHandler fh = new FileHandler(getContext());
         m.addAll(fh.displayMeeting(getContext()));
-        //m.add(new Meeting("Meet", "12/04/10"));
-        //m.add(new Meeting("blaze", "20/04/20"));
-        //m.add(new Meeting("blaze", "20/05/20"));
         mAdapter = new RecyclerAdapter(getContext(), m);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
