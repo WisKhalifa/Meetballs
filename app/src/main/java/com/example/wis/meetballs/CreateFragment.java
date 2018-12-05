@@ -7,23 +7,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.model.LatLng;
 
 
 public class CreateFragment extends Fragment {
 
 
     protected EditText titleEdit, notesEdit, dateEdit, timeEdit;
-    static LatLng coord;
-
-    GoogleMap mMap;
-    MapView mMapView;
+    protected AutoCompleteTextView attendeeEdit;
 
     @Nullable
     @Override
@@ -36,6 +32,7 @@ public class CreateFragment extends Fragment {
         notesEdit = view.findViewById(R.id.MeetingNotes);
         dateEdit = view.findViewById(R.id.MeetingDate);
         timeEdit = view.findViewById(R.id.MeetingTime);
+        attendeeEdit = view.findViewById(R.id.AddAttendee);
 
 
         Button createMeetingButton, locationButton;
@@ -51,17 +48,13 @@ public class CreateFragment extends Fragment {
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 startActivity(i);
-
-                i.getDoubleExtra("LATIUDE", MapsActivity.lat);
-                i.getDoubleExtra("LONGITUDE", MapsActivity.longi);
-                System.out.println("lat" + MapsActivity.lat);
-                System.out.println("long" + MapsActivity.longi);
-
             }
         });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                R.layout.attendee_layout, R.id.pastAttendee, FileHandler.findAttendees(this.getContext()));
+        attendeeEdit.setAdapter(adapter);
 
 
         return view;
@@ -75,6 +68,7 @@ public class CreateFragment extends Fragment {
         String notes = this.notesEdit.getText().toString();
         String date = this.dateEdit.getText().toString();
         String time = this.timeEdit.getText().toString();
+        String attend = this.attendeeEdit.getText().toString();
         Double lat = MapsActivity.lat;
         Double longi = MapsActivity.longi;
         FileHandler fh = new FileHandler(getContext());
@@ -90,9 +84,19 @@ public class CreateFragment extends Fragment {
         if (notes.equals("")) {
             valid = false;
         }
+        if (time.equals("")) {
+            valid = false;
+        }
+
+        if (attend.equals("")) {
+            valid = false;
+        }
 
         if (valid) {
-            fh.createMeeting(title, notes, date, time, lat, longi);
+
+            String[] names = attend.split(" ");
+
+            fh.createMeeting(title, notes, date, time, lat, longi, names);
         } else {
             Toast.makeText(this.getContext(), "Enter data", Toast.LENGTH_SHORT).show();
         }

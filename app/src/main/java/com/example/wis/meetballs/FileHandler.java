@@ -20,6 +20,19 @@ public class FileHandler {
         this.context = context;
     }
 
+    public static List<String> findAttendees(Context c) {
+        List<String> names = new ArrayList<>();
+        List<Meeting> meets = displayMeeting(c);
+
+        for (Meeting m : meets) {
+            for (String s : m.getAttendees()) {
+                names.add(s);
+            }
+        }
+
+        return names;
+    }
+
 
     public static List<Meeting> displayMeeting(Context c) {
         List<Meeting> meeting = new ArrayList<>();
@@ -41,6 +54,11 @@ public class FileHandler {
                     m.setLat(Double.parseDouble(ms[4]));
                     m.setLongi(Double.parseDouble(ms[5]));
 
+                    String[] names = ms[6].split(";");
+                    for (String s : names) {
+                        m.getAttendees().add(s);
+                    }
+
                     meeting.add(m);
                 }
 
@@ -55,7 +73,7 @@ public class FileHandler {
         return meeting;
     }
 
-    public void createMeeting(String title, String notes, String date, String time, double lat, double longi) {
+    public void createMeeting(String title, String notes, String date, String time, double lat, double longi, String[] attendees) {
 
 
         try {
@@ -73,6 +91,10 @@ public class FileHandler {
             outputStreamWriter.write(Double.toString(lat));
             outputStreamWriter.write(",");
             outputStreamWriter.write(Double.toString(longi));
+            outputStreamWriter.write(",");
+            for (String s : attendees) {
+                outputStreamWriter.write(s + ";");
+            }
             outputStreamWriter.write("\n");
             outputStreamWriter.close();
 

@@ -53,15 +53,17 @@
         android:hint="@string/time"
         tools:text="@tools:sample/date/hhmm" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="239dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/MeetingDate"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="-99dp"
-        android:hint="@string/attendees" />
+    <AutoCompleteTextView
+        android:id="@+id/AddAttendee"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Add Attendees" />
 
     <Button
         android:id="@+id/createMeetingButton"

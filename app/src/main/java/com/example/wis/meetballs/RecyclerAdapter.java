@@ -74,6 +74,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                 TextView mLongView = mFormView.findViewById(R.id.dialogMeetingLong);
                 mLongView.setText(Double.toString(meeting.getLongi()));
 
+                TextView mAttendView = mFormView.findViewById(R.id.dialogMeetingAttend);
+                String atts = "";
+                for (String s : meeting.getAttendees()) {
+                    atts += s + "; ";
+                }
+                mAttendView.setText(atts);
+
                 Button mLocView = mFormView.findViewById(R.id.meetingLocation);
                 mLocView.setOnClickListener(new View.OnClickListener() {
                     @Override
