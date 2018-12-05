@@ -38,11 +38,51 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Meeting meeting = mMeetings.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        final Meeting meeting = mMeetings.get(position);
         holder.mTextView1.setText(meeting.getName());
 
         holder.mTextView2.setText(meeting.getDate());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    /*new AlertDialog.Builder(v.getContext())
+                            .setTitle("Meeting Details")
+                            .show();*/
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
+                builder.setTitle("Meeting Details");
+                LayoutInflater lF = LayoutInflater.from(context);
+                final View mFormView = lF.inflate(R.layout.activity_alert_dialog_custom_view_display_meeting, null);
+                builder.setView(mFormView);
+
+                TextView mTitleView = mFormView.findViewById(R.id.dialogMeetingTle);
+                mTitleView.setText(meeting.getName());
+
+                TextView mNoteView = mFormView.findViewById(R.id.dialogMeetingNotes);
+                mNoteView.setText(meeting.getNotes());
+
+                TextView mDateView = mFormView.findViewById(R.id.dialogMeetingDate);
+                mDateView.setText(meeting.getDate());
+
+                TextView mTimeView = mFormView.findViewById(R.id.dialogMeetingTime);
+                mTimeView.setText(meeting.getTime());
+
+                TextView mLatView = mFormView.findViewById(R.id.dialogMeetingLat);
+                mLatView.setText(Double.toString(meeting.getLat()));
+
+                TextView mLongView = mFormView.findViewById(R.id.dialogMeetingLong);
+                mLongView.setText(Double.toString(meeting.getLongi()));
+
+
+                builder.create();
+                builder.show();
+
+
+            }
+        });
+
 
     }
 
@@ -57,21 +97,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
         private List<Meeting> currentMeeting;
 
-        public MyViewHolder(final View v, List<Meeting> m) {
+        public MyViewHolder(final View v, final List<Meeting> m) {
             super(v);
+
             mTextView1 = v.findViewById(R.id.meetName);
             mTextView2 = v.findViewById(R.id.meetDate);
             currentMeeting = m;
 
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Meeting Details")
-
-                            .show();
-                }
-            });
 
         }
 
