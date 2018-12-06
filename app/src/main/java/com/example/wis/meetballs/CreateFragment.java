@@ -21,10 +21,12 @@ public class CreateFragment extends Fragment {
     protected EditText titleEdit, notesEdit, dateEdit, timeEdit;
     protected AutoCompleteTextView attendeeEdit;
 
+
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create, container, false);
+
 
         final Intent i = new Intent(getContext(), MapsActivity.class);
 
@@ -103,6 +105,13 @@ public class CreateFragment extends Fragment {
 
         valid = false;
 
+    }
+
+    public void setTextColorBlue() {
+        EditText titleEdit = getActivity().findViewById(R.id.MeetingTitle);
+
+        titleEdit.setTextColor(0xFF00FF00);
+        titleEdit.setHintTextColor(0xFF00FF00);
     }
 
 
