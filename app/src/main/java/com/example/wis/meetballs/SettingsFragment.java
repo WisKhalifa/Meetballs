@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class SettingsFragment extends Fragment {
 
+    //Variables taken from radio button selections for if statements
     int blueColor = 2131230878;
     int bigSize = 2131230876;
     int redColor = 2131230882;
@@ -23,16 +24,16 @@ public class SettingsFragment extends Fragment {
     int smallSize = 2131230884;
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-
+        //Set radio groups
         final RadioGroup radioColorGroup = view.findViewById(R.id.radioColor);
         final RadioGroup radioSizeGroup = view.findViewById(R.id.radioSize);
 
+        //Button to change text globally
         Button mSetButton = view.findViewById(R.id.setButton);
         mSetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +87,7 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
+    //Methods to change color and size in the settings fragment
     public void setTextColorBlue() {
         TextView t1 = getActivity().findViewById(R.id.setColor);
         TextView t2 = getActivity().findViewById(R.id.setSize);

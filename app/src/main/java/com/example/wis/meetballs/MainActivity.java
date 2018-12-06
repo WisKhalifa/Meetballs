@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             Fragment selectedFragment = null;
-
+            //Switch case to change to navigation selected on bottom navigation bar
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     selectedFragment = new HomeFragment();

@@ -8,8 +8,9 @@
         android:id="@+id/setColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:color="#000"
-        android:text="Set Text Colour:" />
+        android:text="@string/set_text_colour"
+        android:textColor="#000000"
+        android:textSize="26sp" />
 
 
     <RadioGroup
@@ -22,29 +23,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:textColor="#000"
-            android:text="Blue" />
+            android:text="@string/blue"
+            android:textSize="26sp" />
 
         <RadioButton
             android:id="@+id/radioRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Red" />
+            android:text="@string/red"
+            android:textSize="26sp" />
 
         <RadioButton
             android:id="@+id/radioGreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Green" />
+            android:text="@string/green"
+            android:textSize="26sp" />
 
         <RadioButton
             android:id="@+id/radioBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Black" />
+            android:text="@string/black"
+            android:textSize="26sp" />
 
     </RadioGroup>
 
@@ -52,7 +56,9 @@
         android:id="@+id/setSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Set Text Size: " />
+        android:text="@string/set_text_size"
+        android:textColor="#000000"
+        android:textSize="26sp" />
 
     <RadioGroup
         android:id="@+id/radioSize"
@@ -64,21 +70,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Small" />
+            android:text="@string/small"
+            android:textSize="26sp" />
 
         <RadioButton
             android:id="@+id/radioMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Medium" />
+            android:text="@string/medium"
+            android:textSize="26sp" />
 
         <RadioButton
             android:id="@+id/radioBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Big" />
+            android:text="@string/big"
+            android:textSize="26sp" />
 
     </RadioGroup>
 
@@ -86,7 +95,8 @@
         android:id="@+id/setButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Apply Changes" />
+        android:text="@string/apply_changes"
+        android:textSize="26sp" />
 
 
 </LinearLayout>

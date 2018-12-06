@@ -14,43 +14,39 @@ import android.widget.TextView;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
+    //Changeable text variables
+    static int colorText = Color.BLACK;
+    static int sizeText = 26;
+    //Variables used for adapter
     private List<Meeting> mMeetings;
     private Context context;
 
-    static int colorText = Color.BLACK;
-    static int sizeText = 26;
-
-
+    //Generic constructor
     public RecyclerAdapter(Context context, List<Meeting> mMeetings) {
         this.context = context;
         this.mMeetings = mMeetings;
 
     }
 
+    //When this view is created, this is called to create the view holder and passes the meeting list
     @Override
     public RecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate
-        //(R.layout.recycler_layout, parent, false);
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.recycler_layout, parent, false);
-
-
         MyViewHolder vh = new MyViewHolder(v, mMeetings);
-
-
-
         return vh;
     }
 
+    //When the viewholder is called, this sets the values inside to equal locations in the meeting
+    //object
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Meeting meeting = mMeetings.get(position);
         holder.mTextView1.setText(meeting.getName());
-
         holder.mTextView2.setText(meeting.getDate());
 
-
+        //Dialog creator when any textitem is called to show that meetings details
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,11 +96,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                 mAttendView.setTextColor(colorText);
                 mAttendView.setTextSize(sizeText);
 
-
+                //Button to show the location of a specific meeting
                 Button mLocView = mFormView.findViewById(R.id.meetingLocation);
                 mLocView.setTextColor(colorText);
                 mLocView.setTextSize(sizeText);
-
                 mLocView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -115,45 +110,32 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                     }
                 });
 
-
                 builder.create();
                 builder.show();
-
-
             }
         });
-
-
     }
 
+    //Returns size of the meeting list
     @Override
     public int getItemCount() {
         return mMeetings.size();
     }
 
+    //Sets the textviews inside the recycler view
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView1, mTextView2;
-
-
         private List<Meeting> currentMeeting;
 
         public MyViewHolder(final View v, final List<Meeting> m) {
             super(v);
-
             mTextView1 = v.findViewById(R.id.meetName);
             mTextView2 = v.findViewById(R.id.meetDate);
-
             mTextView1.setTextColor(colorText);
             mTextView1.setTextSize(sizeText);
             mTextView2.setTextColor(colorText);
             mTextView2.setTextSize(sizeText);
             currentMeeting = m;
-
-
         }
-
-
     }
-
-
 }

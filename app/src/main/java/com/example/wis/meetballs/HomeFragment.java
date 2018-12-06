@@ -17,11 +17,12 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-
+    //Creating the recycler view
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
-
+    //Creating this view constructs the recycler adapter and layout manager, then calls
+    //displayMeeting() to get every meeting in the meeting file and allows the adapter to display them
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,14 +32,12 @@ public class HomeFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.MeetingList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(c);
         mRecyclerView.setLayoutManager(layoutManager);
-
         List<Meeting> m = new ArrayList<>();
         FileHandler fh = new FileHandler(getContext());
         m.addAll(fh.displayMeeting(getContext()));
         mAdapter = new RecyclerAdapter(getContext(), m);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
 
         return view;
     }

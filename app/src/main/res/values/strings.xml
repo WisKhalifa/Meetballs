@@ -11,4 +11,16 @@
     <string name="attendees">Attendees</string>
     <string name="create_meeting">Create Meeting</string>
     <string name="set_location">Set Location</string>
+    <string name="add_attendees">Add Attendees</string>
+    <string name="set_text_colour">Set Text Colour:</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="black">Black</string>
+    <string name="set_text_size">Set Text Size:</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="big">Big</string>
+    <string name="apply_changes">Apply Changes</string>
+    <string name="show_meeting_location">Show Meeting Location</string>
 </resources>

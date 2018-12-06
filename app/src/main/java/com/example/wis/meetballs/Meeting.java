@@ -5,20 +5,21 @@ import java.util.ArrayList;
 
 public class Meeting implements Serializable {
 
+    //Variables for a meeting object
     private String name, notes;
     private ArrayList<String> attendees;
     private Double lat, longi;
     private String date, time;
 
-
+    //Generic constructor
     public Meeting(String name, String date) {
         this.name = name;
         this.date = date;
         attendees = new ArrayList<>();
-
-
     }
 
+
+    //Generic setters and getters
     public String getName() {
         return name;
     }
@@ -34,7 +35,6 @@ public class Meeting implements Serializable {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
 
     public ArrayList<String> getAttendees() {
         return attendees;

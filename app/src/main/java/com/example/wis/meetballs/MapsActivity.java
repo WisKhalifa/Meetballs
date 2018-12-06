@@ -9,29 +9,27 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    public Marker mMarker;
-
+    //Changable latitude and longitude variables
     public static double lat = 51.619543;
     public static double longi = -3.878634;
+    private GoogleMap mMap;
 
-
+    //Sets content view to mapview
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
-
+    //Sets up the mapview by adding a marker to the Computational Foundry, and allowing
+    //user to add a marker by tapping their finger on that location
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -47,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coFo));
 
-
+        //Listener for user tap to add a marker there
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -56,6 +54,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .position(point)
                         .title("New Marker Point");
                 mMap.addMarker(marker);
+                //Changes latitude and longitude to new marker location
                 lat = (point.latitude);
                 longi = (point.longitude);
                 Toast.makeText(MapsActivity.this, point.latitude + " " + point.longitude, Toast.LENGTH_LONG).show();
