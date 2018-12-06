@@ -1,6 +1,7 @@
 package com.example.wis.meetballs;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,9 @@ public class CreateFragment extends Fragment {
 
     protected EditText titleEdit, notesEdit, dateEdit, timeEdit;
     protected AutoCompleteTextView attendeeEdit;
+    static int colorText = Color.BLACK;
+    static int sizeText = 26;
+
 
 
     @Nullable
@@ -36,9 +40,30 @@ public class CreateFragment extends Fragment {
         timeEdit = view.findViewById(R.id.MeetingTime);
         attendeeEdit = view.findViewById(R.id.AddAttendee);
 
+        titleEdit.setTextColor(colorText);
+        titleEdit.setHintTextColor(colorText);
+        titleEdit.setTextSize(sizeText);
+        notesEdit.setTextColor(colorText);
+        notesEdit.setHintTextColor(colorText);
+        notesEdit.setTextSize(sizeText);
 
-        Button createMeetingButton, locationButton;
-        createMeetingButton = view.findViewById(R.id.createMeetingButton);
+        dateEdit.setTextColor(colorText);
+        dateEdit.setHintTextColor(colorText);
+        dateEdit.setTextSize(sizeText);
+
+        timeEdit.setTextColor(colorText);
+        timeEdit.setHintTextColor(colorText);
+        timeEdit.setTextSize(sizeText);
+
+        attendeeEdit.setTextColor(colorText);
+        attendeeEdit.setHintTextColor(colorText);
+        attendeeEdit.setTextSize(sizeText);
+
+
+        Button createMeetingButton = view.findViewById(R.id.createMeetingButton);
+        createMeetingButton.setTextColor(colorText);
+        createMeetingButton.setTextSize(sizeText);
+
         createMeetingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +71,10 @@ public class CreateFragment extends Fragment {
             }
         });
 
-        locationButton = view.findViewById(R.id.locationButton);
+        Button locationButton = view.findViewById(R.id.locationButton);
+        locationButton.setTextColor(colorText);
+        locationButton.setTextSize(sizeText);
+
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,13 +133,6 @@ public class CreateFragment extends Fragment {
 
         valid = false;
 
-    }
-
-    public void setTextColorBlue() {
-        EditText titleEdit = getActivity().findViewById(R.id.MeetingTitle);
-
-        titleEdit.setTextColor(0xFF00FF00);
-        titleEdit.setHintTextColor(0xFF00FF00);
     }
 
 

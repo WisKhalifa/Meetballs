@@ -3,6 +3,7 @@ package com.example.wis.meetballs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,9 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
     private List<Meeting> mMeetings;
     private Context context;
+
+    static int colorText = Color.BLACK;
+    static int sizeText = 26;
 
 
     public RecyclerAdapter(Context context, List<Meeting> mMeetings) {
@@ -81,7 +85,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                 }
                 mAttendView.setText(atts);
 
+                mTitleView.setTextColor(colorText);
+                mTitleView.setTextSize(sizeText);
+                mNoteView.setTextColor(colorText);
+                mNoteView.setTextSize(sizeText);
+                mDateView.setTextColor(colorText);
+                mDateView.setTextSize(sizeText);
+                mTimeView.setTextColor(colorText);
+                mTimeView.setTextSize(sizeText);
+                mLatView.setTextColor(colorText);
+                mLatView.setTextSize(sizeText);
+                mLongView.setTextColor(colorText);
+                mLongView.setTextSize(sizeText);
+                mAttendView.setTextColor(colorText);
+                mAttendView.setTextSize(sizeText);
+
+
                 Button mLocView = mFormView.findViewById(R.id.meetingLocation);
+                mLocView.setTextColor(colorText);
+                mLocView.setTextSize(sizeText);
+
                 mLocView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -119,6 +142,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
             mTextView1 = v.findViewById(R.id.meetName);
             mTextView2 = v.findViewById(R.id.meetDate);
+
+            mTextView1.setTextColor(colorText);
+            mTextView1.setTextSize(sizeText);
+            mTextView2.setTextColor(colorText);
+            mTextView2.setTextSize(sizeText);
             currentMeeting = m;
 
 

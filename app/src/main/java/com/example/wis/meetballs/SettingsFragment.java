@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+
 public class SettingsFragment extends Fragment {
 
     int blueColor = 2131230878;
@@ -23,12 +24,10 @@ public class SettingsFragment extends Fragment {
 
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        final CreateFragment cf = new CreateFragment();
 
 
         final RadioGroup radioColorGroup = view.findViewById(R.id.radioColor);
@@ -44,27 +43,39 @@ public class SettingsFragment extends Fragment {
 
                 if (selectedColor == blueColor) {
                     setTextColorBlue();
-
-                    //cf.setTextColorBlue();
-
+                    CreateFragment.colorText = Color.BLUE;
+                    RecyclerAdapter.colorText = Color.BLUE;
                 }
                 if (selectedColor == redColor) {
                     setTextColorRed();
+                    CreateFragment.colorText = Color.RED;
+                    RecyclerAdapter.colorText = Color.RED;
                 }
                 if (selectedColor == greenColor) {
                     setTextColorGreen();
+                    CreateFragment.colorText = Color.GREEN;
+                    RecyclerAdapter.colorText = Color.GREEN;
                 }
                 if (selectedColor == blackColor) {
                     setTextColorBlack();
+                    CreateFragment.colorText = Color.BLACK;
+                    RecyclerAdapter.colorText = Color.BLACK;
                 }
                 if (selectedSize == smallSize) {
                     setTextSizeSmall();
+                    CreateFragment.sizeText = 12;
+                    RecyclerAdapter.sizeText = 12;
+
                 }
                 if (selectedSize == mediumSize) {
                     setTextSizeMedium();
+                    CreateFragment.sizeText = 26;
+                    RecyclerAdapter.sizeText = 26;
                 }
                 if (selectedSize == bigSize) {
                     setTextSizeBig();
+                    CreateFragment.sizeText = 35;
+                    RecyclerAdapter.sizeText = 35;
                 }
 
 

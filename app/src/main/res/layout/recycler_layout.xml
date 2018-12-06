@@ -11,7 +11,9 @@
         android:id="@+id/meetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#c7b8a0" />
+        android:layout_marginTop="10dp"
+        android:background="#d3d3d3"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/meetDate"
