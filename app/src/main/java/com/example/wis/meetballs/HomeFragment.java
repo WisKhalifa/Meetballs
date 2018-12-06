@@ -21,6 +21,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
+
     //Creating this view constructs the recycler adapter and layout manager, then calls
     //displayMeeting() to get every meeting in the meeting file and allows the adapter to display them
     @Nullable
