@@ -50,6 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onMapClick(LatLng point) {
+                mMap.clear();
                 MarkerOptions marker = new MarkerOptions()
                         .position(point)
                         .title("New Marker Point");
